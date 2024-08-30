@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RTLolaMo3Vis.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">White</Color>
+            <Color x:Key="Secondary">#212529</Color>
+            <Color x:Key="BackgroundLight">White</Color>
+            <Color x:Key="BackgroundDark">#2C2C34</Color>
+            <!-- <Color x:Key="OverlayLight">#B9B9BB</Color> -->
+            <Color x:Key="OverlayLight">#d9d9d9</Color>
+            <Color x:Key="OverlayDark">#4F4F56</Color>
+            <Color x:Key="TextLight">#2C2C34</Color>
+            <Color x:Key="TextLightLight">#727278</Color>
+            <Color x:Key="TextDark">#B9B9BB</Color>
+            <Color x:Key="TextDarkLight">#C5C5C6</Color>
+            <Color x:Key="PastelRed">#FF9B71</Color>
+            <Color x:Key="PastelYellow">#F8F991</Color>
+            <Color x:Key="PastelYellowDark">#ECD282</Color>
+            <Color x:Key="PastelYellowDarkDark">#b59a4a</Color>
+            <Color x:Key="PastelLightGreen">#9AB87A</Color>
+            <Color x:Key="pastelLightGreenDark">#6F9447</Color>
+            <Color x:Key="PastelGreen">#708B75</Color>
+            <Color x:Key="PastelBlue">#79C7C5</Color>
+            <Color x:Key="PastelBlueDark">#3D6463</Color>
+            <Color x:Key="TabBarColor">#16161A</Color>
+            <Color x:Key="OverlayExtraLight">#CACACF</Color>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="RobotoSlabBold"></Setter>
+                <Setter Property="TextColor" Value="#212529"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#91A3B5" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="MontserraBold"></Setter>
+            </Style>
+            <Style TargetType="Frame">
+                <Setter Property="HasShadow" Value="False"></Setter>
+            </Style>
+        </ResourceDictionary>        
+    </Application.Resources>
+</Application>

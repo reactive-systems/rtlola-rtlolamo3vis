@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RTLolaMo3Vis.Views.SpecPage"
+    xmlns:model ="clr-namespace:RTLolaMo3Vis.Models"
+    Title="Specifications"
+    xmlns:views ="clr-namespace:RTLolaMo3Vis.Views"
+    xmlns:local ="clr-namespace:RTLolaMo3Vis.ViewModels;assembly=RTLolaMo3Vis">
+
+    <Shell.TitleView>
+        <Label VerticalOptions="Center" Text="Specifications" VerticalTextAlignment="Center" FontFamily="MontserraBold"
+               BackgroundColor="{StaticResource BackgroundDark}"
+               TextColor="White" FontSize="28"/>
+    </Shell.TitleView>
+
+    <!--
+    <ContentPage.BindingContext>
+        <local:SpecsViewModel/>
+    </ContentPage.BindingContext>
+    -->
+
+    <StackLayout Spacing="20" Padding="10" Orientation="Vertical" x:Name="stackLayout" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}">
+        <!--
+        <RefreshView x:Name="refreshView" IsRefreshing="{Binding IsRefreshing}"
+             Command="{Binding RefreshCommand}" HorizontalOptions="CenterAndExpand" WidthRequest="8000">
+            <CollectionView x:Name="collection" IsGrouped="False" ItemsSource="{Binding Specs}" Margin="15,15" SelectionMode="Single" SelectionChanged="SpecSelected" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}" WidthRequest="8000" CornerRadius="10">
+                        <StackLayout Orientation="Horizontal">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Label  Text="{Binding Name}" FontFamily="RobotoSlabBold" TextColor="{AppThemeBinding Light={StaticResource TextLight}, Dark={StaticResource TextDark}}" FontSize="17" x:Name="label" 
+                                VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                            <CheckBox  ClassId="{Binding Id}" Color="{StaticResource PastelBlueDark}" IsChecked="True" CheckedChanged="CheckedChanged" VerticalOptions="Center"
+                                          HorizontalOptions="Center"/>
+                        </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        -->
+
+        <Frame x:Name="clickFrameSpec" CornerRadius="10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="UploadSpec" />
+            </Frame.GestureRecognizers>
+            <StackLayout>
+                <Label Text="Click to Upload Specification" FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Current Spec:" FontSize="19" TextColor="{AppThemeBinding Dark={StaticResource TextDark},
+                        Light={StaticResource TextLight}}" HorizontalOptions="CenterAndExpand" FontFamily=""/>
+                    <Label x:Name="specFileName" Text="none" FontSize="19" TextColor="{AppThemeBinding Dark={StaticResource TextDark},
+                        Light={StaticResource TextLight}}" HorizontalOptions="CenterAndExpand" FontFamily=""/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+        <!--
+        <Button Text="Save file experiment" Clicked="SaveFile" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                TextColor="{AppThemeBinding Dark=White, Light=Black}"/> -->
+        <Editor x:Name="specEntry" Text="No spec set yet." IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Completed="entryCompleted"
+                BackgroundColor="{AppThemeBinding Dark=Black, Light= {StaticResource OverlayLight}}" />
+        <Button Text="Build Monitor with current Specs" Clicked="MonitorButton" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+        <!--
+        <Button Text="Test random input" Clicked="TestInputButton" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                TextColor="{AppThemeBinding Dark=White, Light=Black}"/> -->
+    </StackLayout>
+
+
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:RTLolaMo3Vis.Views"
+       Title="RTLolaMo3Vis"
+       x:Class="RTLolaMo3Vis.AppShell">
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+    
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
+    -->
+
+    
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource BackgroundDark}, Dark={StaticResource BackgroundDark}}" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource PastelBlue}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="White" />
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" >
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <ShellContent Title="Connection" Icon="connection_icon.png" Route="ConnectionPage" ContentTemplate="{DataTemplate local:ConnectionPage}" />
+        <ShellContent Title="Spec" Icon="rtlola_icon.png" Route=" SpecPage" ContentTemplate="{DataTemplate local:SpecPage}" />
+        <!-- <ShellContent Title="Experiment" Icon="settings.png" Route="ExpPage" ContentTemplate="{DataTemplate local:SaveAndLoadText}" /> -->
+        <ShellContent Title="Charts" Icon="stats_icon.png" Route=" StatsPage" ContentTemplate="{DataTemplate local:StatsPage}" />
+        <ShellContent Title="History" Icon="alert_icon.png" Route="TriggerHistoryPage" ContentTemplate="{DataTemplate local:TabbedHistoryPage}" />
+    </TabBar>
+
+
+</Shell>

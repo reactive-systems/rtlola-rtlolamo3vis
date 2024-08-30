@@ -1,0 +1,115 @@
+﻿{
+  "Specs": [
+    {
+      "Name": "Accident",
+      "Id": "0",
+      "Triggers": [
+        {
+          "Explanation": "Counter Warning",
+          "Importance": "2",
+          "Id": "0"
+        },
+        {
+          "Explanation": "RPM trigger",
+          "Importance": "3",
+          "Id": "1"
+        }
+      ]
+    },
+    {
+      "Name": "Accident",
+      "Id": "1",
+      "Triggers": [
+        {
+          "Explanation": "TODO",
+          "Importance": "0",
+          "Id": "0"
+        },
+        {
+          "Explanation": "TODO",
+          "Importance": "1",
+          "Id": "1"
+        },
+        {
+          "Explanation": "TODO",
+          "Importance": "2",
+          "Id": "2"
+        },
+        {
+          "Explanation": "TODO",
+          "Importance": "3",
+          "Id": "3"
+        }
+      ],
+      "Plots": [
+        {
+          "Id": "0",
+          "X": "Speed",
+          "Y": "Timestamp",
+          "Series": [
+            {
+            },
+            {
+            },
+            {
+            }
+          ]
+        },
+        {
+          "Id": "1",
+          "X": "Speed",
+          "Y": "Timestamp",
+          "Series": [
+            {
+            },
+            {
+            },
+            {
+            }
+          ]
+        },
+        {
+          "Id": "2",
+          "X": "Speed",
+          "Y": "Timestamp",
+          "Series": [
+            {
+            },
+            {
+            },
+            {
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Parking",
+      "Id": "2",
+      "Triggers": [
+        {
+          "Name": "Hit",
+          "Explanation": "TODO",
+          "Importance": "0",
+          "Id": "1"
+        },
+        {
+          "Explanation": "TODO",
+          "Importance": "1",
+          "Id": "0"
+        },
+        {
+          "Explanation": "TODO",
+          "Importance": "2",
+          "Id": "2"
+        },
+        {
+          "Explanation": "TODO",
+          "Importance": "3",
+          "Id": "3"
+        }
+      ]
+    }
+  ]
+}
+

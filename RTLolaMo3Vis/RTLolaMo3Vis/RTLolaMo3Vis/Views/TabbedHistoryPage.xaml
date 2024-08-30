@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RTLolaMo3Vis.Views.TabbedHistoryPage"
+             xmlns:local ="clr-namespace:RTLolaMo3Vis.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             >
+
+    <Shell.TitleView>
+         <Label VerticalOptions="Center" FontFamily="MontserraBold" Text="Trigger History" VerticalTextAlignment="Center" TextColor="White"  FontSize="28"/>
+            <!--<ImageButton Grid.Column="1" Command="{Binding DeleteItemsCommand}" BackgroundColor="Transparent" Source="delete.png"/>-->
+    </Shell.TitleView>
+    
+    <ContentPage.BindingContext>
+        <local:TriggerHistoryViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid>
+            <xct:TabView
+                x:Name="tabView"
+                TabStripPlacement="Top"
+                TabStripBackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}"
+                TabStripHeight="60"
+                TabIndicatorColor="{AppThemeBinding Dark=White, Light= Black}"
+                TabContentBackgroundColor="Blue">
+
+                <xct:TabViewItem
+                    Text="All"
+                    TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                    TextColorSelected="{AppThemeBinding Dark=White, Light=Black}"
+                    FontSize="12">
+                    <Grid Padding="0,10,0,0"
+                        BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+                        <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Padding="10,10" >
+                            <CollectionView IsGrouped="True" ItemsSource="{Binding SpecTriggers}" SelectedItem="{Binding SelectionAll}" SelectionMode="Single"
+                                            BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.GroupHeaderTemplate>
+                                    <DataTemplate>
+                                        <StackLayout  Padding="5">
+                                            <Label Text="{Binding PairImportance.Importance}"  FontSize="18" FontFamily="MontserraBold" HorizontalTextAlignment="Center" TextColor="{Binding PairImportance.color}"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.GroupHeaderTemplate>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10" Padding="10,10,10,10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                                               WidthRequest="5" HeightRequest="50">
+                                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding Message}"
+                                                   TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" FontSize="16"/>
+                                            
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                    </Grid>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    Text="Advisory"
+                    TextColor="{AppThemeBinding Dark={StaticResource PastelBlue}, Light={StaticResource PastelBlueDark}}"
+                    TextColorSelected="{AppThemeBinding Dark={StaticResource PastelBlue}, Light={StaticResource PastelBlueDark}}"
+                    FontSize="12">
+                    <Grid Padding="0,10,0,0"
+                        BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+                        <StackLayout>
+                        <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Padding="15,10">
+                            <CollectionView ItemsSource="{Binding Advisorys}" SelectedItem="{Binding SelectionAdvi}" SelectionMode="Single">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10" Padding="10,10,10,10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                                               WidthRequest="5" HeightRequest="50">
+                                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding Message}"
+                                                   TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" FontSize="16"/>
+                                            
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                        </StackLayout>
+                    </Grid>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    Text="Caution"
+                    TextColor="{AppThemeBinding Dark = {StaticResource PastelLightGreen}, Light={StaticResource pastelLightGreenDark}}"
+                    TextColorSelected="{AppThemeBinding Dark = {StaticResource PastelLightGreen}, Light={StaticResource pastelLightGreenDark}}"
+                    FontSize="12">
+                    <Grid Padding="0,10,0,0"
+                        BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+                        <StackLayout WidthRequest="5">
+                        <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Padding="15,10">
+                            <CollectionView ItemsSource="{Binding Cautions}" SelectedItem="{Binding SelectionCaution}" SelectionMode="Single">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10" Padding="10,10,10,10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                                               WidthRequest="5" HeightRequest="50">
+                                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding Message}"
+                                                   TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" FontSize="16"/>
+                                            
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                        </StackLayout>
+                    </Grid>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    Text="Warning"
+                    TextColor="{AppThemeBinding Dark= {StaticResource PastelYellowDark}, Light={StaticResource PastelYellowDarkDark}}"
+                    TextColorSelected="{AppThemeBinding Dark= {StaticResource PastelYellowDark}, Light={StaticResource PastelYellowDarkDark}}"
+                    FontSize="12">
+                    <Grid Padding="0,10,0,0"
+                        BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+                        <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Padding="15,10">
+                            <CollectionView ItemsSource="{Binding Warnings}" SelectedItem="{Binding SelectionWarning}" SelectionMode="Single">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10" Padding="10,10,10,10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                                               WidthRequest="5" HeightRequest="50">
+                                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding Message}"
+                                                   TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" FontSize="16"/>
+                                            
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                    </Grid>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    Text="Alert"
+                    TextColor="{StaticResource PastelGreen}"
+                    TextColorSelected="{StaticResource PastelGreen}"
+                    FontSize="12">
+                    <Grid Padding="0,10,0,0"
+                        BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+                        <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Padding="15,10">
+                            <CollectionView ItemsSource="{Binding Alerts}" SelectedItem="{Binding SelectionAlert}" SelectionMode="Single">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10" Padding="10,10,10,10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                                               WidthRequest="5" HeightRequest="50">
+                                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding Message}"
+                                                   TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" FontSize="16"/>
+                                            
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                    </Grid>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    Text="Error"
+                    TextColor="{StaticResource PastelRed}"
+                    TextColorSelected="{StaticResource PastelRed}"
+                    FontSize="12">
+                    <Grid Padding="0,10,0,0"
+                        BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+                        <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Padding="15,10" >
+                            <CollectionView ItemsSource="{Binding Errors}" SelectedItem="{Binding SelectionError}" SelectionMode="Single" >
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10" Padding="10,10,10,10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                                               WidthRequest="5" HeightRequest="50">
+                                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding Message}"
+                                                   TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" FontSize="16"/>
+                                            
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                    </Grid>
+                </xct:TabViewItem>
+            </xct:TabView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

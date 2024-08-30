@@ -1,0 +1,18 @@
+﻿{
+	"timestamp": "Float64",
+	"msg_id": "UInt8",
+	"node_id": "UInt16",
+	"payload": {
+		"payload_id": "msg_id",
+		"1": {
+			"data": {
+				"velocity_x": "UInt32",
+				"velocity_y": "UInt32",
+				"acceleration_x": "UInt16",
+				"acceleration": "UInt16",
+				"latitude": "UInt64",
+				"longitude": "UInt64"
+			}
+		}
+	}
+}

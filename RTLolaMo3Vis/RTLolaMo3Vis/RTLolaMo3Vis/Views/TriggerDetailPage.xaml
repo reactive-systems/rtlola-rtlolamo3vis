@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RTLolaMo3Vis.Views.TriggerDetailPage"
+    xmlns:viewmodels ="clr-namespace:RTLolaMo3Vis.ViewModels"
+    Title="Details"
+    BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+
+    <Shell.TitleView>
+        <Label VerticalOptions="Center" Text="Specifications" VerticalTextAlignment="Center" FontFamily="MontserraBold"
+               BackgroundColor="{StaticResource BackgroundDark}"
+               TextColor="White" FontSize="Title"/>
+    </Shell.TitleView>
+
+    <StackLayout Padding="15">
+        <Label Text="Importance: " TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLightLight}}" FontSize="18"/>
+        <Label Text="{Binding Importance}" TextColor="{AppThemeBinding Dark=White, Light=Black}" FontSize="18" FontFamily="RobotoSlabBold"/>
+        <Label Text="Message: " TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLightLight}}" FontSize="18"/>
+        <Label Text="{Binding Message}" TextColor="{AppThemeBinding Dark=White, Light=Black}"  FontSize="18" FontFamily="RobotoSlabBold"/>
+        <Label Text="Explanation: " TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLightLight}}" FontSize="18"/>
+        <Label Text="{Binding Explanation}" TextColor="{AppThemeBinding Dark=White, Light=Black}" FontSize="18" FontFamily="RobotoSlabBold"/>
+    </StackLayout>
+</ContentPage>

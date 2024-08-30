@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RTLolaMo3Vis.Views.StatsPage"
+             xmlns:local ="clr-namespace:RTLolaMo3Vis.ViewModels;assembly=RTLolaMo3Vis"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+
+    <ContentPage.BindingContext>
+        <local:StatsPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout x:Name="outerStack" Spacing="20" Padding="10">
+            <Frame x:Name="clickFrameVerdictSink" CornerRadius="10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="UploadVerdictSinkCfg" />
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Label Text="Upload Verdict Sink Config" FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Current Config:" FontSize="19" TextColor="{AppThemeBinding Dark={StaticResource TextDark},
+                            Light={StaticResource TextLight}}" HorizontalOptions="CenterAndExpand" FontFamily=""/>
+                        <Label x:Name="verdSinkFileNameLabel" Text="none" FontSize="19" TextColor="{AppThemeBinding Dark={StaticResource TextDark},
+                            Light={StaticResource TextLight}}" HorizontalOptions="CenterAndExpand" FontFamily=""/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Button Text="Click to show charts with this configuration." Clicked="UpdateButton" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}"
+                TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+            <StackLayout x:Name="mainStack1"/>
+            <StackLayout x:Name="mainStack2">
+                <Frame x:Name="triggerFrame"
+                HeightRequest="50"
+                CornerRadius="10"
+       
+                BorderColor="{Binding Trigger.bordercolor}"
+                BackgroundColor="{Binding Trigger.color}">
+                    <StackLayout VerticalOptions="Center">
+                        <Label Text="{Binding Trigger.trigger.Message}" VerticalOptions="Center" HorizontalTextAlignment="Center" FontFamily="MontserraBold" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{Binding Trigger.textcolor}" />
+                        <Label Text="{Binding Trigger.trigger.Explanation}" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

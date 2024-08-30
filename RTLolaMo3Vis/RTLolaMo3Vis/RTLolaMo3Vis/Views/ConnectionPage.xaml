@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RTLolaMo3Vis.Views.ConnectionPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="Connection Setup">
+
+    <Shell.TitleView>
+        <Label VerticalOptions="Center" Text="Connection Setup" VerticalTextAlignment="Center" FontFamily="MontserraBold"
+               BackgroundColor="{StaticResource BackgroundDark}"
+               TextColor="White" FontSize="28"/>
+    </Shell.TitleView>
+
+    <!--
+    <StackLayout
+        BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}" Spacing="20" Padding="10">
+        
+        <Frame CornerRadius="10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}">
+            <StackLayout Spacing="0" Padding="0" Orientation="Vertical">
+                <Label Text="UDP Connection" FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}" HorizontalOptions="CenterAndExpand"/>
+                    <Entry Margin="30,10,30,0" x:Name="ipAddressUDP" Placeholder="IP Address" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                    <Entry Margin="30,10,30,0" x:Name="portUDP" Placeholder="UDP Port" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                    <Button Margin="30,10,30,0" x:Name="udpConnectButton" Clicked="ConnectUDP"  Text="Start Listening"
+                            BackgroundColor="{AppThemeBinding Dark={StaticResource PastelBlueDark}, Light={StaticResource PastelBlue}}" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+            </StackLayout>
+        </Frame>
+        <Frame CornerRadius="10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}">
+                        <StackLayout Spacing="0" Padding="0" Orientation="Vertical">
+                            <Label Text="RabbitMQ Connection" FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}" HorizontalOptions="CenterAndExpand"/>
+                            <Entry Margin="30,10,30,0" x:Name="username" Placeholder="Username" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                            <Entry Margin="30,10,30,0" x:Name="password" Placeholder="Password" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                            <Entry Margin="30,10,30,0" x:Name="hostname" Placeholder="Hostname" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                            <Entry Margin="30,10,30,0" x:Name="port" Placeholder="Port" Keyboard="Numeric" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                            <Entry Margin="30,10,30,0" x:Name="queue" Placeholder="Queue" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                            <Button Margin="30,10,30,0" Clicked="ConnectQueue"  Text="Connect" BackgroundColor="{StaticResource PastelBlueDark}" TextColor="White"/>
+                        </StackLayout>
+        </Frame> -->
+
+    <StackLayout Padding="10" Spacing="20">
+        <Frame CornerRadius="10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}">
+                        <StackLayout Spacing="0" Padding="0" Orientation="Vertical">
+                            <Label Text="UDP Connection" FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}" HorizontalOptions="CenterAndExpand"/>
+                            <Entry Margin="30,10,30,0" x:Name="ipAddressUDP" Placeholder="IP Address" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                            <Entry Margin="30,10,30,0" x:Name="portUDP" Placeholder="UDP Port" TextTransform="None" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" FontSize="19"/>
+                            <Button Margin="30,10,30,0" x:Name="udpConnectButton" Clicked="ConnectUDP"  Text="Start Listening"
+                                    BackgroundColor="{AppThemeBinding Dark={StaticResource PastelBlueDark}, Light={StaticResource PastelBlue}}" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+                        </StackLayout>
+                    </Frame>
+        <Frame
+            x:Name="clickFrameEventSource" CornerRadius="10" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="UploadEvSourcCfg" />
+            </Frame.GestureRecognizers>
+            <StackLayout>
+                <Label Text="Upload Event Source Config" FontSize="20" TextColor="{AppThemeBinding Dark=White, Light=Black}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Current Config:" FontSize="19" TextColor="{AppThemeBinding Dark={StaticResource TextDark},
+                        Light={StaticResource TextLight}}" HorizontalOptions="CenterAndExpand" FontFamily=""/>
+                    <Label x:Name="evSourcFileNameLabel" Text="none" FontSize="19" TextColor="{AppThemeBinding Dark={StaticResource TextDark},
+                        Light={StaticResource TextLight}}" HorizontalOptions="CenterAndExpand" FontFamily=""/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+
+        <!--
+        
+    </StackLayout> -->
+</ContentPage>

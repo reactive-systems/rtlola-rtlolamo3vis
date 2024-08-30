@@ -1,0 +1,30 @@
+﻿{    "Plots": [
+        {
+                "Id": "0",
+                "X": "x",
+                "Y": "y",
+                "XLimit": "xlimit0",
+                "YLimit": "ylimit0",
+                "Series": [
+                        {
+                                "Stream": "velocity"
+                        },
+                        {
+                                "Stream": "acceleration"
+                        }
+                ]
+        },
+        {
+                "Id": "1",
+                "X": "x",
+                "Y": "y",
+                "XLimit": "xlimit1",
+                "YLimit": "ylimit1",
+                "Series": [
+                        {
+                                "Stream": "gps"
+                        }
+                ]
+        }
+      ]
+    }

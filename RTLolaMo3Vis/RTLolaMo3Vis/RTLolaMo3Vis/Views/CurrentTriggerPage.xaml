@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local ="clr-namespace:RTLolaMo3Vis.ViewModels;assembly=RTLolaMo3Vis"
+    x:Class="RTLolaMo3Vis.Views.CurrentTriggerPage"
+    Title="Triggers">
+
+    <Shell.TitleView>
+        <Label VerticalOptions="Center" Text="Trigger" VerticalTextAlignment="Center" FontFamily="MontserraBold"
+               BackgroundColor="{StaticResource BackgroundDark}"
+               TextColor="White" FontSize="Title"/>
+    </Shell.TitleView>
+
+    <StackLayout Spacing="20" Padding="20" Orientation="Vertical"
+        x:Name="outerStack" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}">
+
+        <StackLayout.BindingContext>
+            <local:ViolatedTriggerViewModel />
+        </StackLayout.BindingContext>
+        <StackLayout Spacing="20" HorizontalOptions="FillAndExpand"
+                    WidthRequest="1000"
+                     HeightRequest="1000" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}">
+            <Frame
+                HeightRequest="1000"
+                CornerRadius="5"
+       
+                BorderColor="{Binding Alert.bordercolor}"
+            BackgroundColor="{Binding Alert.color}">
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="{Binding Alert.trigger.Message}" VerticalOptions="Center" HorizontalTextAlignment="Center" FontFamily="MontserraBold" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{Binding Alert.textcolor}" />
+                    <Label Text="{Binding Alert.trigger.Explanation}" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+
+            
+            <Frame CornerRadius="5"
+                   HeightRequest="1000"
+                   BorderColor="{Binding Caution.bordercolor}"
+            BackgroundColor="{Binding Caution.color}">
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="{Binding Caution.trigger.Message}" FontFamily="MontserraBold" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{Binding Caution.textcolor}" />
+                    <Label Text="{Binding Caution.trigger.Explanation}" HorizontalTextAlignment="Center" TextColor="White" VerticalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        <StackLayout Spacing="20" Orientation="Horizontal"  HorizontalOptions="FillAndExpand"
+                    WidthRequest="600"
+                     HeightRequest="800" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}">
+            <Frame
+                HeightRequest="1000"
+                WidthRequest="1000"
+                CornerRadius="5"
+                BorderColor="{Binding Warning.bordercolor}"
+            BackgroundColor="{Binding Warning.color}">
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="{Binding Warning.trigger.Message}" FontFamily="MontserraBold" HorizontalTextAlignment="Center"
+                           VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{Binding Warning.textcolor}" />
+                    <Label Text="{Binding Warning.trigger.Explanation}" HorizontalTextAlignment="Center" TextColor="White" VerticalTextAlignment="Center"/>
+                </StackLayout>
+
+            </Frame>
+            <Frame
+                HeightRequest="1000"
+                WidthRequest="1000"
+                CornerRadius="5"
+                BorderColor="{Binding Warning.bordercolor}"
+            BackgroundColor="{Binding Advisory.color}">
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="{Binding Advisory.trigger.Message}" VerticalOptions="Center" FontFamily="MontserraBold" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold"  TextColor="{Binding Advisory.textcolor}" />
+                    <Label Text="{Binding Advisory.trigger.Explanation}" HorizontalTextAlignment="Center" TextColor="White" VerticalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

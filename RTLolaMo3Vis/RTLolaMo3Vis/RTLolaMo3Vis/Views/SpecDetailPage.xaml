@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RTLolaMo3Vis.Views.SpecDetailPage"
+             xmlns:models="clr-namespace:RTLolaMo3Vis.Models"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}"
+             >
+
+    <Shell.TitleView>
+        <Label VerticalOptions="Center" Text="SpecDetail" VerticalTextAlignment="Center" FontFamily="MontserraBold"
+               BackgroundColor="{StaticResource BackgroundDark}"
+               TextColor="White" FontSize="Title"/>
+    </Shell.TitleView>
+    
+    <ContentPage.Content>
+        <CollectionView  x:Name="collectionView" Margin="15,10" BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}">
+            <CollectionView.Header>
+                <Label x:Name="listTitle" FontFamily="MontserraBold" FontSize="18" Padding="10" HorizontalOptions="Start" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+            </CollectionView.Header>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10" Padding="5,5" BackgroundColor="{AppThemeBinding Dark={StaticResource OverlayDark}, Light={StaticResource OverlayLight}}">
+                        <Grid x:DataType="models:SpecTrigger" Padding="5" ColumnDefinitions="*, 2*">
+                            <Label Grid.Column="0" VerticalOptions="Center" Text="{Binding Importance}" TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" FontSize="16"/>
+                            <Label Grid.Column="1" VerticalOptions="StartAndExpand" Text="{Binding Message}" TextColor="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" FontSize="16"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
