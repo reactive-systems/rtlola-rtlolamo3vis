@@ -1,8 +1,3 @@
----
-title: RTLolaMo<sub>3</sub>Vis
-
----
-
 # RTLolaMo<sup>3</sup>Vis
 The RTLolaMo<sup>3</sup>Vis app is built using [Xamarin Forms](https://dotnet.microsoft.com/en-us/apps/xamarin/xamarin-forms) and thus C#. 
 Xamarin Forms follows the [MVVM principle](https://learn.microsoft.com/en-us/dotnet/architecture/maui/mvvm). Thus, the code is divided into folders according to its functionality. 
