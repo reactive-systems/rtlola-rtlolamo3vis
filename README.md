@@ -11,4 +11,4 @@ The app needs an interface of the RTLola monitor to make the Interpreter that wa
 We include the code necessary for building this FFI in `monitor-c-ffi`.
 
 ## Copyright
-Copyright (C) CISPA - Helmholtz Center for Information Security 2024. Authors: Jan Baumeister, Jan Kautenburger, and Clara Rubeck. Based on original work at Universität des Saarlandes (C) 2024. Authors: Jan Baumeister, Jan Kautenburger, and Clara Rubeck.
+Copyright (C) CISPA - Helmholtz Center for Information Security 2024. Authors: Jan Baumeister, Jan Kautenburger, and Clara Rubeck.
