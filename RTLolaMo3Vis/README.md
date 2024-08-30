@@ -100,4 +100,4 @@ Thus, interacting with unmanaged code also necessitates handling data structures
 
 
 ## Copyright
-Copyright (C) CISPA - Helmholtz Center for Information Security 2024. Authors: Jan Baumeister, Jan Kautenburger, and Clara Rubeck. Based on original work at Universität des Saarlandes (C) 2024. Authors: Jan Baumeister, Jan Kautenburger, and Clara Rubeck.
+Copyright (C) CISPA - Helmholtz Center for Information Security 2024. Authors: Jan Baumeister, Jan Kautenburger, and Clara Rubeck.
