@@ -1,0 +1,16 @@
+{
+    "timestamp": "Float64",
+    "msg_id": "UInt8",
+    "payload": {
+        "payload_id": "msg_id",
+        "1": {
+            "data": {
+                "ip1": "UInt8",
+                "ip2": "UInt8",
+                "ip3": "UInt8",
+                "ip4": "UInt8",
+                "success": "UInt8"
+            }
+        }
+    }
+}

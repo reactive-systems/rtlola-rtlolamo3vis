@@ -1,0 +1,26 @@
+input timestamp: Float64
+input ip1: UInt8
+input ip2: UInt8
+input ip3: UInt8
+input ip4: UInt8
+input success: UInt8
+
+// 77.240.184.232
+output ip_stream_1: (Float64, Float64, Bool)
+    eval when ip1 == 77 && ip2 == 240 && ip3 == 184 && ip4 == 232
+    with (timestamp, 1.0, success == 1)
+
+// 50.27.144.188
+output ip_stream_2: (Float64, Float64, Bool)
+    eval when ip1 == 50 && ip2 == 27 && ip3 == 144 && ip4 == 188
+    with (timestamp, 2.0, success == 1)
+
+// 219.250.132.243
+output ip_stream_3: (Float64, Float64, Bool)
+    eval when ip1 == 219 && ip2 == 250 && ip3 == 132 && ip4 == 243
+    with (timestamp, 3.0, success == 1)
+
+    // 219.250.125.76
+output ip_stream_4: (Float64, Float64, Bool)
+    eval when ip1 == 219 && ip2 == 250 && ip3 == 125 && ip4 == 76
+    with (timestamp, 4.0, success == 1)

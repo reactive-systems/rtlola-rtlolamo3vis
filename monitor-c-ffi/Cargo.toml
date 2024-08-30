@@ -1,0 +1,22 @@
+[package]
+name = "monitor_interface"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "monitor_interface"
+# crate-type = ["cdylib"]      # Creates dynamic lib
+crate-type = ["staticlib"] # Creates static lib
+
+[build-dependencies]
+cbindgen = "0.26"
+
+[dependencies]
+rtlola-frontend = { git = "ssh://git@projects.cispa.saarland/group-finkbeiner/tools/RTLola/RTLola-Frontend.git", branch = "development", default-features = false }
+rtlola-interpreter = { git = "ssh://git@projects.cispa.saarland/group-finkbeiner/tools/RTLola/RTLola-Interpreter.git", branch = "17-vector-factory", default-features = false }
+rtlola-input-plugins = { git = "ssh://git@projects.cispa.saarland/group-finkbeiner/tools/RTLola/RTLola-Interpreter.git", branch = "17-vector-factory", default-features = false }
+log = "0.4.14"
+nom = "7.1.3"
+itertools = "0.12.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }

@@ -1,0 +1,49 @@
+import math
+
+// Need to be adjusted depending on AirSim
+constant lon_min:Float := -48.75
+constant lon_max:Float := 60.0
+constant lat_min:Float := -80.0
+constant lat_max:Float := 60.0
+
+input timestamp: Float64
+input vel_xy: Float64, vel_z: Float64
+input lat: Float64, lon: Float64, alt: Float64
+
+// calculate total velocity
+// output vel := sqrt(vel_xy^2.0 + vel_z^2.0)
+
+// speed difference
+output diff_too_high_xy := abs(vel_xy - vel_xy.last(or:vel_xy)) > 10.0
+output filtered_vel_xy eval when !diff_too_high_xy with vel_xy
+output timed_vel_xy @1Hz := vel_xy.hold(or: timed_vel_xy.last(or: 0.0))  //filtered_vel_xy.aggregate(over: 2s, using: average).defaults(to: timed_vel_xy.last(or: 0.0))
+trigger diff_too_high_xy "Difference is greater than 10.0."
+
+// speed difference
+output diff_too_high_z := abs(vel_z - vel_z.last(or:vel_z)) > 10.0
+output filtered_vel_z eval when !diff_too_high_z with vel_z
+output timed_vel_z @1Hz := vel_z.hold(or: timed_vel_z.last(or: 0.0))//filtered_vel_z.aggregate(over: 2s, using: average).defaults(to: timed_vel_z.last(or: 0.0))
+trigger diff_too_high_z "Difference is greater than 10.0."
+
+// altitude change and boundary violation
+output avg_altitude @1Hz := alt.aggregate(over: 1min, using: avg).defaults(to: avg_altitude.last(or: 0.0))
+output altitude_diff := abs(alt - avg_altitude.hold(or: alt))
+output altitude_violation := alt > 60.0 //altitude_diff > 25.0 && 
+output filtered_alt eval when !altitude_violation with alt
+output timed_alt @1Hz := alt.hold(or: timed_alt.last(or: 0.0))//filtered_alt.aggregate(over: 2s, using: average).defaults(to: timed_alt.last(or: 0.0))
+trigger altitude_diff > 25.0 "Altitude changed too quickly."
+trigger alt < 0.0 || alt > 100.0 "Altitude boundary violation."
+
+// geofence (violation if trespassing for more than 3 seconds)
+output lon_violation := lon < lon_min || lon > lon_max
+output lat_violation := lat < lat_min || lat > lat_max
+output geofence_violation := lon_violation || lat_violation
+output severe_geofence_violation @1Hz := geofence_violation.aggregate(over_exactly: 3s, using: forall).defaults(to: false) 
+trigger lon_violation "Longitude boundary violation."
+trigger lat_violation "Latitude boundary violation."
+trigger severe_geofence_violation "Boundary violation for more than 3 seconds."
+
+output speed_diff_point_xy := (timestamp.hold(or:0.0), timed_vel_xy, false)//diff_too_high_xy.aggregate(over: 1s, using: exists))
+output speed_diff_point_z := (timestamp.hold(or:0.0), timed_vel_z, timed_vel_z > 0.5 || timed_vel_z < -0.37) //diff_too_high_z.aggregate(over: 1s, using: exists))
+output gps_location_point @1Hz := (lon.hold(or: -122.14) , lat.hold(or: 47.64) , severe_geofence_violation.aggregate(over: 1s, using: exists))
+output altitude_diff_point := (timestamp.hold(or:0.0), timed_alt, altitude_violation.aggregate(over: 1s, using: exists))

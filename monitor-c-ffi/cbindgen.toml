@@ -1,0 +1,78 @@
+# The language to output bindings in
+language = "C"
+
+# An optional string of text to output at the beginning of the generated file
+# default: doesn't emit anything
+# header = "/* Text to put at the beginning of the generated file. Probably a license. */"
+
+# An optional string of text to output at the end of the generated file
+# default: doesn't emit anything
+# trailer = "/* Text to put at the end of the generated file */"
+
+# An optional name to use as an include guard
+# default: doesn't emit an include guard
+include_guard = "RTLOLA_FFI"
+
+# Whether to include a comment with the version of cbindgen used to generate the file
+# default: false
+include_version = true
+
+# An optional namespace to output around the generated bindings
+# default: doesn't emit a namespace
+# namespace = "ffi"
+
+# A list of lines to add verbatim after the includes block
+after_includes = "\n\ntypedef void *RTLOLA_FFI_RTLola_Monitor;"
+
+# Include doc comments from Rust as documentation
+documentation = true
+
+
+[export]
+# A list of additional items to always include in the generated bindings if they're
+# found but otherwise don't appear to be used by the public API.
+#
+# default: []
+# include = ["MyOrphanStruct", "MyGreatTypeRename"]
+
+# A list of items to not include in the generated bindings
+# default: []
+# exclude = ["Bad"]
+
+# A prefix to add before the name of every item
+# default: no prefix is added
+prefix = "RTLOLA_FFI_"
+
+
+[struct]
+# generates operator==
+derive_eq = true
+# generates operator!=
+derive_neq = true
+
+[fn]
+# An optional prefix to put before every function declaration
+# default: no prefix added
+# prefix = "RTLola"
+
+# An optional postfix to put after any function declaration
+# default: no postix added
+# postfix = "RTLola"
+
+
+[enum]
+# Generates IsFoo() methods.
+derive_helper_methods = true
+# Generates `const T& AsFoo() const` methods.
+derive_const_casts = true
+# Adds an `assert(IsFoo())` on each `AsFoo()` method.
+cast_assert_name = "assert"
+# Generates destructors.
+derive_tagged_enum_destructor = true
+# Generates copy-constructors.
+derive_tagged_enum_copy_constructor = true
+# Generates copy-assignment operators.
+derive_tagged_enum_copy_assignment = true
+# Generates a private default-constructor for enums that doesn't initialize
+# anything. Either you do this or you provide your own default constructor.
+private_default_tagged_enum_constructor = true

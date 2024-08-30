@@ -1,0 +1,49 @@
+{
+    "Plots": [
+        {
+            "Id": "0",
+            "X": "Longitude",
+            "Y": "Latitude",
+            "Series": [
+                {
+                    "Stream": "gps_location_point",
+                    "Connected": "False",
+                    "Color": "Blue",
+                    "Triggercolor": "Red"
+                }
+            ]
+        },
+        {
+            "Id": "1",
+            "X": "Time (minutes)",
+            "Y": "(Timed) Velocity (m/s)",
+            "Series": [
+                {
+                    "Stream": "speed_diff_point_xy",
+                    "Connected": "False",
+                    "Color": "Blue",
+                    "Triggercolor": "Red"
+                },
+                {
+                    "Stream": "speed_diff_point_z",
+                    "Connected": "False",
+                    "Color": "Green",
+                    "Triggercolor": "Red"
+                }
+            ]
+        },
+        {
+            "Id": "2",
+            "X": "Time (minutes)",
+            "Y": "Altitude",
+            "Series": [
+                {
+                    "Stream": "altitude_diff_point",
+                    "Connected": "False",
+                    "Color": "Green",
+                    "Triggercolor": "Red"
+                }
+            ]
+        }
+    ]
+}

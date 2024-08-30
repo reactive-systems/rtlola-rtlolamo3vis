@@ -1,0 +1,35 @@
+{
+    "Plots": [
+        {
+            "Id": "0",
+            "X": "Time (seconds)",
+            "Y": "IP Address",
+            "Series": [
+                {
+                    "Stream": "ip_stream_1",
+                    "Connected": "False",
+                    "Color": "Blue",
+                    "Triggercolor": "Red"
+                },
+                {
+                    "Stream": "ip_stream_2",
+                    "Connected": "False",
+                    "Color": "Green",
+                    "Triggercolor": "Red"
+                },
+                {
+                    "Stream": "ip_stream_3",
+                    "Connected": "False",
+                    "Color": "Yellow",
+                    "Triggercolor": "Red"
+                },
+                {
+                    "Stream": "ip_stream_4",
+                    "Connected": "False",
+                    "Color": "Blue",
+                    "Triggercolor": "Red"
+                }
+            ]
+        }
+    ]
+}

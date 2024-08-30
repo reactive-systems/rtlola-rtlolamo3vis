@@ -1,0 +1,17 @@
+{
+    "timestamp": "Float64",
+    "msg_id": "UInt8",
+    "node_id": "UInt16",
+    "payload": {
+        "payload_id": "msg_id",
+        "1": {
+            "data": {
+                "vel_xy": "Float64",
+                "vel_z": "Float64",
+                "lat": "Float64",
+                "lon": "Float64",
+                "alt": "Float64"
+            }
+        }
+    }
+}
